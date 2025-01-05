@@ -1,0 +1,64 @@
+# Byte-compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+env/
+venv/
+ENV/
+VENV/
+*.env
+*.venv
+
+# Django stuff
+db.sqlite3
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Local development settings
+settings_local.py
+
+# Media and static files
+/media/
+staticfiles/
+
+# Backup files
+*.bak
+*.swp
+*.swo
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dependency files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.cache/
+
+# Testing output
+*.cover
+*.pytest_cache/
+test-results.xml
+
+# Node modules (if using JavaScript/React/TypeScript)
+node_modules/
+
+# Compiled CSS and JavaScript
+*.css.map
+*.js.map

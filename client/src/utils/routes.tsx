@@ -9,20 +9,21 @@ import { createBrowserRouter } from "react-router-dom";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <ProductPage />,
-      },
-      {
-        path: "cart",
-        element: <Cart />,
-      },
-      {
-        path: "favorite",
-        element: <Favorite />,
-      },
-    ],
+    element: <div />
+    // element: <Layout />,
+    // children: [
+    //   {
+    //     path: "/",
+    //     element: <ProductPage />,
+    //   },
+    //   {
+    //     path: "cart",
+    //     element: <Cart />,
+    //   },
+    //   {
+    //     path: "favorite",
+    //     element: <Favorite />,
+    //   },
+    // ],
   },
 ]);

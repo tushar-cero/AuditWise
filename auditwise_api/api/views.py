@@ -25,19 +25,43 @@ class GetUsersView(APIView):
   
 # ----- Transaction Views
 
-class TransactionListCreate(generics.ListCreateAPIView):
-  queryset = TransactionSerializer
+class TransactionListView(generics.ListAPIView):
   permission_classes = [IsAuthenticated]
+  serializer_class = TransactionSerializer
 
   def get_queryset(self):
     user = self.request.user
     return TransactionModel.objects.filter(user=user)
-  
-  def perform_create(self, serializer):
-    if serializer.is_valid():
-      serializer.save(user=self.request.user)
-    else:
-      print(serializer.errors)
+
+class TransactionCreateView(generics.CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = TransactionSerializer
+
+    def create(self, request, *args, **kwargs):
+        text = request.data.get('text', None)
+
+        if not text:
+            return Response({"error": "No text provided"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            # expecting data in the format: "purpose amount tag"
+            data = text.split(' ')
+
+            transaction_data = {
+                'user': request.user.pk,
+                'purpose': data[0],
+                'amount': data[1],
+                'tag': data[2]
+            }
+
+            serializer = self.get_serializer(data=transaction_data)
+            serializer.is_valid(raise_exception=True)
+            self.perform_create(serializer)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+        except (ValueError, AttributeError) as e: # Catch parsing or data errors
+            return Response({"error": f"Invalid input format. Could not parse: {e}"}, status=status.HTTP_400_BAD_REQUEST)
 
 class TransactionDelete(generics.DestroyAPIView):
   serializer_class = TransactionSerializer

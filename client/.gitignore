@@ -1,0 +1,85 @@
+# Node.js dependencies
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production build
+/build/
+
+# Local development files
+.env
+.env.*.local
+!.env.example
+
+# Editor specific files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+*.swn
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Testing output
+/coverage/
+*.lcov
+
+# Dependency directories
+/.pnp
+.pnp.js
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Temporary files
+/tmp
+*.tmp
+
+# MacOS specific
+.AppleDouble
+.LSOverride
+
+# Parcel-bundler cache (if using parcel)
+.cache/
+
+# React Native
+.expo/
+web-build/
+*.expo*
+
+# IDE and system configuration files
+/.sass-cache/
+/.nyc_output/
+/.history/
+.idea/
+/.vscode/
+/*.sublime-workspace
+*.swp
+*.lock
+*.env.local
+
+# Jest snapshot files
+*.snap
+
+# ESLint cache
+.eslintcache
+
+# Stylelint cache
+.stylelintcache
+
+# Prettier cache
+.prettier-cache
+
+# Build artifacts
+dist/
+out/
