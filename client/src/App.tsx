@@ -1,5 +1,9 @@
 import React, { FC, useState } from "react";
 import axios from "axios";
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "utils/routes";
+import { ThemeProvider } from "@mui/material";
+import { generateTheme } from "style";
 
 export const App: FC = () => {
   const [registerUserFormData, setRegisterUserFormData] = useState({
@@ -53,6 +57,11 @@ export const App: FC = () => {
 
   return (
     <>
+      <ThemeProvider theme={generateTheme('light', 'App')}>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </ThemeProvider>
       <form>
         <h1>Register User</h1>
         <input
