@@ -19,7 +19,14 @@ const routes = [
 export const Sidebar = () => {
   const theme = useTheme();
   return (
-    <Grid2 display="flex" flexDirection="column" height="100%" justifyContent="space-between" padding="24px">
+    <Grid2
+      display="flex"
+      flexDirection="column"
+      height="100%"
+      justifyContent="space-between"
+      padding="24px"
+      width="116px"
+    >
       <List sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         {routes.map((listItem) => (
           <ListItemButton

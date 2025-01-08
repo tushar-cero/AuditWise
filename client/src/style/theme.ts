@@ -28,6 +28,15 @@ const getTheme = (mode: PaletteMode, module: string) => ({
   palette: {
     mode
   },
+  typography: {
+    fontFamily: 'Manrope, Inter',
+    h1: {
+      fontSize: '24px',
+      fontWeight: 500,
+      lineHeight: '32px',
+      fontFamily: 'Manrope'
+    }
+  },
   custom: {
     text800: '#81807C',
     text900: '#101010',

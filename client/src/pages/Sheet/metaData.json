@@ -1,0 +1,36 @@
+{
+    "columns": [
+        {
+          "field": "date",
+          "headerName": "Date",
+          "width": 100
+        },
+        {
+          "field": "time",
+          "headerName": "Time",
+          "width": 150
+        },
+        {
+          "field": "purpose",
+          "headerName": "Purpose",
+          "width": 450,
+          "flex": 1
+        },
+        {
+          "field": "amount",
+          "headerName": "Amount",
+          "type": "number",
+          "width": 100
+        },
+        {
+          "field": "tags",
+          "headerName": "Tag",
+          "width": 200
+        },
+        {
+          "field": "type",
+          "headerName": "Type",
+          "width": 120
+        }
+    ]
+}

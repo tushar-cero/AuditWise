@@ -10,7 +10,7 @@ export const Header = () => {
   const userName = 'John Doe';
 
   return (
-    <CustomGrid fullWidth padding="16px 24px" boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px">
+    <CustomGrid fullWidth padding="16px 24px">
       <Grid2 display="flex" alignItems="center" gap="16px">
         <Box
           sx={{
@@ -30,7 +30,7 @@ export const Header = () => {
       </Grid2>
       <CustomGrid gap="8px">
         <Avatar sx={{ padding: '8px', backgroundColor: theme.custom.primary500 }}>
-          {IconLibrary({ name: 'UserIcon', size: '16px', color: theme.custom.text900 })}
+          {IconLibrary({ name: 'UserIcon', size: '16', color: theme.custom.text900 })}
         </Avatar>
         {userName}
       </CustomGrid>

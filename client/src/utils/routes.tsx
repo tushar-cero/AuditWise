@@ -1,9 +1,10 @@
-import React, { JSX } from "react";
-import { useRoutes, Navigate } from "react-router-dom";
+import React, { JSX } from 'react';
+import { useRoutes, Navigate } from 'react-router-dom';
 
 import { Layout } from '../pages/Layout';
 import { Login } from '../pages/Login';
-import { Dashboard } from "pages/Dashboard";
+import { Dashboard } from 'pages/Dashboard';
+import { Sheet } from 'pages/Sheet';
 
 // Protect routes that require authentication
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
@@ -14,28 +15,28 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
 export const AppRoutes = () => {
   const routes = [
     {
-      path: "/login",
-      element: <Login />,
+      path: '/login',
+      element: <Login />
     },
     {
-      path: "/",
+      path: '/',
       // element: <ProtectedRoute><Layout /></ProtectedRoute>,
       element: <Layout />,
       children: [
         {
-          path: "/",
+          path: '/',
           element: <Navigate to="/dashboard" replace />
         },
         {
-          path: "dashboard",
-          element: <Dashboard />,
+          path: 'dashboard',
+          element: <Dashboard />
         },
         {
-          path: "sheet",
-          element: <Dashboard />,
-        },
-      ],
-    },
+          path: 'sheet',
+          element: <Sheet />
+        }
+      ]
+    }
   ];
 
   return useRoutes(routes);
