@@ -5,14 +5,16 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
   return {
     border: 0,
     borderColor: 'none',
+    fontFamily: 'Inter, sans-serif',
     height: 'auto',
     width: '100%',
     fontWeight: '400',
     '& .MuiDataGrid-cell': {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
-      whiteSpace: 'nowrap'
-      //   borderBottom: `1px solid ${theme.custom.grey50}`
+      whiteSpace: 'nowrap',
+      borderRight: `1px solid ${theme.custom.border}`,
+      borderBottom: `1px solid ${theme.custom.border}`
     },
     '& .MuiDataGrid-cell:hover': {
       color: 'none'
@@ -24,9 +26,8 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
       outline: 'none !important'
     },
     '& .MuiDataGrid-columnHeader': {
-      //   color: theme.custom.textBlack,
       fontWeight: 600,
-
+      border: 'none',
       '&[data-field="__check__"]': {
         '.MuiDataGrid-columnSeparator': {
           display: 'none'
@@ -41,12 +42,10 @@ export const StyledDataGrid = styled(DataGrid)(({ theme }) => {
     },
     '& .MuiDataGrid-actionsCell': {
       '&:hover': {
-        // background: theme.custom.blueGrey50,
         borderRadius: '4px'
       }
     },
     '& .MuiDataGrid-columnHeadersInner': {
-      //   backgroundColor: theme.custom.grey50,
       borderRadius: '6px'
     },
     '& .MuiDataGrid-row:hover': {

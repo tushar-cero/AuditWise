@@ -25,7 +25,8 @@
         {
           "field": "tags",
           "headerName": "Tag",
-          "width": 200
+          "width": 200,
+          "renderCell": "renderTags"
         },
         {
           "field": "type",
