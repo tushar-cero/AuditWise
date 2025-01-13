@@ -35,7 +35,14 @@ const DashboardIcon = ({ size, color }: IIconProps) =>
         />
       </svg>,
       'DashboardIcon'
-    )
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
   );
 
 const SheetIcon = ({ size, color }: IIconProps) =>
@@ -54,7 +61,14 @@ const SheetIcon = ({ size, color }: IIconProps) =>
         <path d="M21.4981 16.0001H2.49811" stroke="currentColor" strokeWidth="1.5" />
       </svg>,
       'SheetIcon'
-    )
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
   );
 
 const AddIcon = ({ size, color }: IIconProps) =>
@@ -65,7 +79,14 @@ const AddIcon = ({ size, color }: IIconProps) =>
         <path d="M2.66663 8H13.3333" stroke={color} strokeLinecap="round" strokeLinejoin="round" />
       </svg>,
       'AddIcon'
-    )
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
   );
 
 const UserIcon = ({ size, color }: IIconProps) =>
@@ -86,7 +107,246 @@ const UserIcon = ({ size, color }: IIconProps) =>
         />
       </svg>,
       'UserIcon'
-    )
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
+  );
+
+const CalendarIcon = ({ size, color }: IIconProps) =>
+  createElement(
+    createSvgIcon(
+      <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10.5 1.16663V2.33329M3.5 1.16663V2.33329"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M6.99721 7.58337H7.00246M6.99721 9.91671H7.00246M9.32792 7.58337H9.33317M4.6665 7.58337H4.67174M4.6665 9.91671H4.67174"
+          stroke="currentColor"
+          strokeWidth="1.16667"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M2.0415 4.66663H11.9582"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M1.45825 7.14187C1.45825 4.60013 1.45825 3.32925 2.18866 2.53962C2.91906 1.75 4.09462 1.75 6.44575 1.75H7.55409C9.90521 1.75 11.0808 1.75 11.8112 2.53962C12.5416 3.32925 12.5416 4.60013 12.5416 7.14187V7.44147C12.5416 9.98323 12.5416 11.2541 11.8112 12.0437C11.0808 12.8333 9.90521 12.8333 7.55409 12.8333H6.44575C4.09462 12.8333 2.91906 12.8333 2.18866 12.0437C1.45825 11.2541 1.45825 9.98323 1.45825 7.44147V7.14187Z"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M1.75 4.66663H12.25"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>,
+      'CalendarIcon'
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
+  );
+
+const ClockIcon = ({ size, color }: IIconProps) =>
+  createElement(
+    createSvgIcon(
+      <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_317_543)">
+          <path
+            d="M6.99984 12.8333C10.2215 12.8333 12.8332 10.2216 12.8332 6.99996C12.8332 3.7783 10.2215 1.16663 6.99984 1.16663C3.77818 1.16663 1.1665 3.7783 1.1665 6.99996C1.1665 10.2216 3.77818 12.8333 6.99984 12.8333Z"
+            stroke="currentColor"
+            strokeWidth="0.875"
+          />
+          <path
+            d="M7 4.66663V6.99996L8.16667 8.16663"
+            stroke="currentColor"
+            strokeWidth="0.875"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_317_543">
+            <rect width={size} height={size} fill={color} />
+          </clipPath>
+        </defs>
+      </svg>,
+      'ClockIcon'
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
+  );
+
+const TextWrittenIcon = ({ size, color }: IIconProps) =>
+  createElement(
+    createSvgIcon(
+      <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1.75 1.75H6.41667"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M1.75 5.25H6.41667"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M1.75 8.75H12.25"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M1.75 12.25H12.25"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>,
+      'TextWrittenIcon'
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
+  );
+
+const DollarIcon = ({ size, color }: IIconProps) =>
+  createElement(
+    createSvgIcon(
+      <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10.7429 4.75313C10.7429 3.41674 9.06705 2.33337 6.99984 2.33337C4.9326 2.33337 3.25678 3.41674 3.25678 4.75313C3.25678 6.08952 4.27761 6.8272 6.99984 6.8272C9.72208 6.8272 11.0832 7.51857 11.0832 9.24698C11.0832 10.9753 9.255 11.6667 6.99984 11.6667C4.74468 11.6667 2.9165 10.5833 2.9165 9.24698"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+        />
+        <path
+          d="M7 1.16663V12.8333"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>,
+      'DollarIcon'
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
+  );
+
+const TagIcon = ({ size, color }: IIconProps) =>
+  createElement(
+    createSvgIcon(
+      <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_317_541)">
+          <path
+            d="M10.2085 2.91681C10.6917 2.91681 11.0835 3.30856 11.0835 3.79181C11.0835 4.27506 10.6917 4.66681 10.2085 4.66681C9.72525 4.66681 9.3335 4.27506 9.3335 3.79181C9.3335 3.30856 9.72525 2.91681 10.2085 2.91681Z"
+            stroke="currentColor"
+            strokeWidth="0.875"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M1.61814 6.50057C1.03297 7.15413 1.02038 8.14014 1.55743 8.83378C2.62315 10.2102 3.7896 11.3767 5.16603 12.4423C5.85966 12.9794 6.84566 12.9668 7.49923 12.3817C9.27361 10.7929 10.8985 9.13257 12.4668 7.3079C12.6218 7.12753 12.7188 6.90645 12.7405 6.66956C12.8368 5.62211 13.0345 2.60435 12.215 1.78481C11.3954 0.965265 8.37767 1.16299 7.33024 1.25924C7.09335 1.28101 6.87226 1.37798 6.69184 1.53302C4.86724 3.10123 3.20689 4.72619 1.61814 6.50057Z"
+            stroke="currentColor"
+            strokeWidth="0.875"
+          />
+          <path
+            d="M4.0835 8.16675L5.83348 9.91675"
+            stroke="currentColor"
+            strokeWidth="0.875"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_317_541">
+            <rect width={size} height={size} fill={color} />
+          </clipPath>
+        </defs>
+      </svg>,
+      'TagIcon'
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
+  );
+
+const CreditIcon = ({ size, color }: IIconProps) =>
+  createElement(
+    createSvgIcon(
+      <svg width={size} height={size} viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12.8334 5.54163C12.8121 4.22779 12.7104 3.46879 12.2246 2.92415C12.1264 2.81398 12.018 2.71208 11.9009 2.61963C11.1686 2.04163 10.0719 2.04163 7.87835 2.04163H6.12747C3.93391 2.04163 2.83713 2.04163 2.10488 2.61963C1.98777 2.71208 1.87945 2.81398 1.78118 2.92415C1.16675 3.61299 1.16675 4.64476 1.16675 6.70829C1.16675 8.77183 1.16675 9.80358 1.78118 10.4924C1.87945 10.6026 1.98777 10.7045 2.10488 10.7969C2.83713 11.375 3.93391 11.375 6.12747 11.375H6.41675"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path d="M1.16675 4.95837H12.8334" stroke="currentColor" strokeWidth="0.875" strokeLinejoin="round" />
+        <path
+          d="M11.2778 7.29163L11.758 7.73373C11.8626 7.83646 11.9148 7.88785 11.8965 7.93148C11.878 7.97512 11.8041 7.97512 11.6563 7.97512H9.84541C8.91832 7.97512 8.16675 8.71379 8.16675 9.62496C8.16675 9.83035 8.20496 10.0269 8.27466 10.2083M9.72232 11.9583L9.24212 11.5162C9.13759 11.4135 9.08532 11.3621 9.1037 11.3184C9.12213 11.2748 9.19604 11.2748 9.34386 11.2748H11.1548C12.0818 11.2748 12.8334 10.5361 12.8334 9.62496C12.8334 9.41957 12.7952 9.22298 12.7255 9.04163"
+          stroke="currentColor"
+          strokeWidth="0.875"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>,
+      'CreditIcon'
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
   );
 
 const DefaultIcon = ({ size, color }: IIconProps) =>
@@ -100,7 +360,14 @@ const DefaultIcon = ({ size, color }: IIconProps) =>
         />
       </svg>,
       'UserIcon'
-    )
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
   );
 
 export const IconLibrary = ({ name, size, color }: IIconLibrary) => {
@@ -113,6 +380,18 @@ export const IconLibrary = ({ name, size, color }: IIconLibrary) => {
       return <AddIcon size={size} color={color} />;
     case 'UserIcon':
       return <UserIcon size={size} color={color} />;
+    case 'CalendarIcon':
+      return <CalendarIcon size={size} color={color} />;
+    case 'ClockIcon':
+      return <ClockIcon size={size} color={color} />;
+    case 'TextWrittenIcon':
+      return <TextWrittenIcon size={size} color={color} />;
+    case 'DollarIcon':
+      return <DollarIcon size={size} color={color} />;
+    case 'TagIcon':
+      return <TagIcon size={size} color={color} />;
+    case 'CreditIcon':
+      return <CreditIcon size={size} color={color} />;
     default:
       return <DefaultIcon size={size} color={color} />;
   }

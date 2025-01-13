@@ -3,35 +3,41 @@
         {
           "field": "date",
           "headerName": "Date",
-          "width": 100
+          "width": 100,
+          "headerIcon": "CalendarIcon"
         },
         {
           "field": "time",
           "headerName": "Time",
-          "width": 150
+          "width": 150,
+          "headerIcon": "ClockIcon"
         },
         {
           "field": "purpose",
           "headerName": "Purpose",
           "width": 450,
-          "flex": 1
+          "flex": 1,
+          "headerIcon": "TextWrittenIcon"
         },
         {
           "field": "amount",
           "headerName": "Amount",
           "type": "number",
-          "width": 100
+          "width": 100,
+          "headerIcon": "DollarIcon"
         },
         {
           "field": "tags",
           "headerName": "Tag",
           "width": 200,
-          "renderCell": "renderTags"
+          "renderCell": "renderTags",
+          "headerIcon": "TagIcon"
         },
         {
           "field": "type",
           "headerName": "Type",
-          "width": 120
+          "width": 120,
+          "headerIcon": "CreditIcon"
         }
     ]
 }

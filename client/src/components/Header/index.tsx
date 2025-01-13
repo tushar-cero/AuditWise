@@ -10,7 +10,7 @@ export const Header = () => {
   const userName = 'John Doe';
 
   return (
-    <CustomGrid fullWidth padding="16px 24px">
+    <CustomGrid padding="16px 24px">
       <Grid2 display="flex" alignItems="center" gap="16px">
         <Box
           sx={{

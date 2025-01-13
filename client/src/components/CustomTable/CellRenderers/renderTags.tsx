@@ -1,17 +1,34 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { GridCellParams } from '@mui/x-data-grid';
+import { generateRandomColor } from 'utils';
 
 export const renderTags = (params: GridCellParams) => {
-  //   const { colDef, row } = params;
+  const { row } = params;
+
   return (
     <Box
       sx={{
-        padding: '4px',
-        borderRadius: '2px'
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px',
+        height: '36px'
       }}
     >
-      Hello
+      {row?.tags.split(',').map((item: string) => (
+        <Box
+          key={item}
+          sx={{
+            padding: '2px 4px',
+            borderRadius: '2px',
+            backgroundColor: generateRandomColor,
+            lineHeight: '16px',
+            marginY: 'auto'
+          }}
+        >
+          {item.trim()}
+        </Box>
+      ))}
     </Box>
   );
 };
