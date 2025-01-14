@@ -4,6 +4,7 @@ import { PaletteMode } from '@mui/material';
 declare module '@mui/material/styles' {
   interface Theme {
     custom: {
+      white?: string;
       text800?: string;
       text900?: string;
       primary200?: string;
@@ -14,6 +15,7 @@ declare module '@mui/material/styles' {
   }
   interface ThemeOptions {
     custom: {
+      white?: string;
       text800?: string;
       text900?: string;
       primary200?: string;
@@ -29,7 +31,7 @@ const getTheme = (mode: PaletteMode, module: string) => ({
     mode
   },
   typography: {
-    fontFamily: 'Manrope, Inter',
+    fontFamily: 'Inter',
     h1: {
       fontSize: '24px',
       fontWeight: 500,
@@ -38,6 +40,7 @@ const getTheme = (mode: PaletteMode, module: string) => ({
     }
   },
   custom: {
+    white: '#ffffff',
     text800: '#81807C',
     text900: '#101010',
     primary200: '#E6FBAB',

@@ -349,6 +349,28 @@ const CreditIcon = ({ size, color }: IIconProps) =>
     }
   );
 
+const CloseIcon = ({ size, color }: IIconProps) =>
+  createElement(
+    createSvgIcon(
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} color={color} fill="none">
+        <path
+          d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>,
+      'CloseIcon'
+    ),
+    {
+      style: {
+        width: size,
+        height: size,
+        display: 'inline-block'
+      }
+    }
+  );
 const DefaultIcon = ({ size, color }: IIconProps) =>
   createElement(
     createSvgIcon(
@@ -392,6 +414,8 @@ export const IconLibrary = ({ name, size, color }: IIconLibrary) => {
       return <TagIcon size={size} color={color} />;
     case 'CreditIcon':
       return <CreditIcon size={size} color={color} />;
+    case 'CloseIcon':
+      return <CloseIcon size={size} color={color} />;
     default:
       return <DefaultIcon size={size} color={color} />;
   }

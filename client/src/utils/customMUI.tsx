@@ -1,4 +1,4 @@
-import { Grid2, styled } from '@mui/material';
+import { Grid2, Button, styled } from '@mui/material';
 
 interface ICustomGridProps {
   fullWidth?: boolean;
@@ -13,4 +13,14 @@ export const CustomGrid = styled(Grid2)<ICustomGridProps>(({ fullWidth, padding 
   width: fullWidth ? '100%' : 'auto',
   padding,
   gap
+}));
+
+export const CustomButton = styled(Button)(() => ({
+  backgroundColor: '#C9F649',
+  color: '#101010',
+  padding: '8px 16px',
+  textTransform: 'capitalize',
+  borderRadius: '4px',
+  fontSize: '14px',
+  boxShadow: 'none'
 }));

@@ -17,7 +17,7 @@ export const Layout = () => {
         }}
       >
         <Sidebar />
-        <Box width="100%">
+        <Box width="100%" overflow="hidden">
           <Outlet />
         </Box>
       </Grid2>

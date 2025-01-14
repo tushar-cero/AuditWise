@@ -3,19 +3,19 @@
         {
           "field": "date",
           "headerName": "Date",
-          "width": 100,
+          "width": 110,
           "headerIcon": "CalendarIcon"
         },
         {
           "field": "time",
           "headerName": "Time",
-          "width": 150,
+          "width": 100,
           "headerIcon": "ClockIcon"
         },
         {
           "field": "purpose",
           "headerName": "Purpose",
-          "width": 450,
+          "minWidth": 150,
           "flex": 1,
           "headerIcon": "TextWrittenIcon"
         },
@@ -36,7 +36,7 @@
         {
           "field": "type",
           "headerName": "Type",
-          "width": 120,
+          "width": 80,
           "headerIcon": "CreditIcon"
         }
     ]

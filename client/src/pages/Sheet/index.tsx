@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid2 } from '@mui/material';
+import { Box, Grid2 } from '@mui/material';
 import { PageHeader } from 'components/PageHeader';
 import { CustomTable } from 'components/CustomTable';
 import columnsJson from './metaData.json';
@@ -56,7 +56,15 @@ export const Sheet = () => {
   return (
     <Grid2 padding="24px">
       <PageHeader pageTitle="Sheet" sx={{ marginBottom: '16px' }} />
-      <CustomTable rowData={cols} columns={columnsJson.columns} />
+      <Box
+        sx={{
+          width: '100%',
+          height: '100%',
+          overflow: 'scroll'
+        }}
+      >
+        <CustomTable rowData={cols} columns={columnsJson.columns} />
+      </Box>
     </Grid2>
   );
 };
