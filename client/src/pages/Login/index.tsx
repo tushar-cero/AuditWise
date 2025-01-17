@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import { TextField, Box, Grid2, Typography, useTheme, FormGroup } from '@mui/material';
 import { CustomButton } from 'utils/customMUI';
-import httpClient from 'httpClient';
+// eslint-disable-next-line react-hooks/exhaustive-deps
+// import httpClient from 'httpClient';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 interface ILoginForm {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -53,22 +55,35 @@ export const Login: React.FC = () => {
   };
 
   const [loginFormData, setLoginFormData] = useState<ILoginForm>({
-    email: '',
+    username: '',
     password: ''
   });
 
-  const handleLoginFormSubmission = useCallback(async () => {
-    console.log('loginFormData', loginFormData);
-    try {
-      await httpClient.post('/auth/login', loginFormData).then((res) => {
-        console.log('res', res);
-        navigate('/dashboard');
-      });
-    } catch (error) {
-      console.error('error', error);
-    }
+  const handleLoginFormSubmission = useCallback(
+    async (e: any) => {
+      e.preventDefault();
+      if (loginFormData.username === '' || loginFormData.password === '') {
+        console.log('No data entered.'); // shoot toast
+      } else {
+        console.log('loginFormData', loginFormData);
+        try {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          // const response: any = await httpClient.post('/auth/token', loginFormData);
+          const response = await axios.post('http://127.0.0.1:8000/api/token/', loginFormData);
+          if (response.status === 200) {
+            localStorage.setItem('AccessToken', JSON.stringify(response?.data?.access));
+            localStorage.setItem('RefreshToken', JSON.stringify(response?.data?.refresh));
+          }
+          // show toast and redirect in 5 seconds
+          navigate('/dashboard');
+        } catch (error) {
+          console.error('There was an error making the request', error);
+        }
+      }
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loginFormData]);
+    [loginFormData]
+  );
 
   return (
     <Grid2 container component="main" sx={classes?.root}>
@@ -83,13 +98,13 @@ export const Login: React.FC = () => {
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="username"
               label="Email Address"
-              name="email"
-              autoComplete="email"
+              name="username"
+              autoComplete="username"
               autoFocus
-              value={loginFormData.email}
-              onChange={(e) => setLoginFormData((prev) => ({ ...prev, email: e.target.value }))}
+              value={loginFormData.username}
+              onChange={(e) => setLoginFormData((prev) => ({ ...prev, username: e.target.value }))}
             />
             <TextField
               variant="outlined"

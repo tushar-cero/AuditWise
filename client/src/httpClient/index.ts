@@ -8,7 +8,7 @@ interface CustomError {
 
 const defaultConfig = {
   baseURL: process.env.API_BASE_URL,
-  timeout: 30000, // 30 seconds
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json'
   }

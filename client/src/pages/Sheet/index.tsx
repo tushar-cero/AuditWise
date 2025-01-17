@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
+import axios from 'axios';
 import { Box, Grid2 } from '@mui/material';
 import { PageHeader } from 'components/PageHeader';
 import { CustomTable } from 'components/CustomTable';
@@ -53,6 +54,26 @@ const cols = [
 ];
 
 export const Sheet = () => {
+  const handleSheetCall = useCallback(async () => {
+    try {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      // const response: any = await httpClient.post('/auth/token', loginFormData);
+      const response = await axios.get('http://127.0.0.1:8000/api/token/');
+      if (response.status === 200) return response?.data;
+      else return [];
+    } catch (error) {
+      // shoot toast
+      console.error('There was an error making the request', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    const response = handleSheetCall();
+    // put data in redux, fetch it from redux and put it in the table.
+    return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Grid2 padding="24px">
       <PageHeader pageTitle="Sheet" sx={{ marginBottom: '16px' }} />
