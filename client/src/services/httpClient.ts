@@ -29,7 +29,7 @@ httpClient.interceptors.response.use(
       originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
       return httpClient(originalRequest);
     }
-    return Promise.reject(error);
+    return Promise.reject(new Error(error));
   }
 );
 
