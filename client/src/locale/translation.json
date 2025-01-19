@@ -1,0 +1,9 @@
+{
+    "buttons": {
+        "signIn": "Sign In",
+        "create": "Create"
+    },
+    "title": {
+        "signIn": "Sign In"
+    }
+}

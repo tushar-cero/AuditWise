@@ -1,10 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import { TextField, Box, Grid2, Typography, useTheme, FormGroup } from '@mui/material';
 import { CustomButton } from 'utils/customMUI';
-// import httpClient from 'services/httpClient';
-import axios from 'axios';
+import httpClient from 'services/httpClient';
+import { ACCESS_TOKEN, REFRESH_TOKEN, API_ENDPOINT } from 'common/constants';
 import { useNavigate } from 'react-router-dom';
-import { ACCESS_TOKEN, REFRESH_TOKEN } from 'common/constants';
+import { useTranslate } from 'hooks/useTranslate';
+// import { useTranslation } from 'react-i18next';
 
 interface ILoginForm {
   username: string;
@@ -14,6 +15,7 @@ interface ILoginForm {
 export const Login: React.FC = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const { t } = useTranslate();
   const classes = {
     root: {
       height: '100vh',
@@ -67,9 +69,7 @@ export const Login: React.FC = () => {
       } else {
         console.log('loginFormData', loginFormData);
         try {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-          // const response: any = await httpClient.post('/auth/token', loginFormData);
-          const response = await axios.post('http://127.0.0.1:8000/api/token/', loginFormData);
+          const response: any = await httpClient.post(API_ENDPOINT.login, loginFormData);
           if (response.status === 200) {
             localStorage.setItem(ACCESS_TOKEN, response?.data?.access);
             localStorage.setItem(REFRESH_TOKEN, response?.data?.refresh);
@@ -90,7 +90,7 @@ export const Login: React.FC = () => {
       <Grid2 sx={classes?.subRoot}>
         <Box sx={classes?.paper}>
           <Typography component="h1" variant="h5">
-            Sign in
+            {t('title.signIn')}
           </Typography>
           <FormGroup sx={classes?.form}>
             <TextField
@@ -120,7 +120,7 @@ export const Login: React.FC = () => {
               onChange={(e) => setLoginFormData((prev) => ({ ...prev, password: e.target.value }))}
             />
             <CustomButton onClick={handleLoginFormSubmission} sx={classes?.submit}>
-              Sign In
+              {t('button.signIn')}
             </CustomButton>
           </FormGroup>
         </Box>

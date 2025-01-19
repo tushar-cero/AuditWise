@@ -29,7 +29,7 @@ export const Header = () => {
         </Typography>
       </Grid2>
       <CustomGrid gap="8px">
-        <Avatar sx={{ padding: '8px', backgroundColor: theme.custom.primary500 }}>
+        <Avatar sx={{ backgroundColor: theme.custom.primary500 }}>
           {IconLibrary({ name: 'UserIcon', size: '16', color: theme.custom.text900 })}
         </Avatar>
         {userName}

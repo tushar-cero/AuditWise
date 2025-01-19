@@ -4,12 +4,13 @@ import { PageHeader } from 'components/PageHeader';
 import { CustomTable } from 'components/CustomTable';
 import httpClient from 'services/httpClient';
 import columnsJson from './metaData.json';
+import { API_ENDPOINT } from 'common/constants';
 
 export const Sheet = () => {
   const [rowData, setRowData] = useState<any>([]);
   const handleSheetCall = useCallback(async () => {
     try {
-      const response = await httpClient.get('transactions/');
+      const response = await httpClient.get(API_ENDPOINT.sheetData);
       if (response.status === 200) setRowData(response?.data);
       else setRowData([]);
     } catch (error) {

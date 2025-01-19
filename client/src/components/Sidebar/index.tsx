@@ -5,6 +5,8 @@ import { IconLibrary } from 'style/icons';
 import { CustomModal } from 'components/CustomModal';
 import { CustomButton } from 'utils/customMUI';
 import httpClient from 'services/httpClient';
+import { API_ENDPOINT } from 'common/constants';
+import { useTranslate } from 'hooks/useTranslate';
 
 const routes = [
   {
@@ -21,13 +23,13 @@ const routes = [
 
 export const Sidebar = () => {
   const theme = useTheme();
+  const { t } = useTranslate();
   const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [transaction, setTransaction] = useState<string>('');
 
   const handleCreateTransaction = useCallback(async () => {
-    console.log('transaction', transaction);
     try {
-      const response = await httpClient.post('/transactions/create/', { text: transaction });
+      const response = await httpClient.post(API_ENDPOINT.createTransaction, { text: transaction });
       if (response.status === 200) console.log('Transaction created successfully');
       else console.log('Transaction creation failed');
     } catch (error) {
@@ -35,7 +37,7 @@ export const Sidebar = () => {
       console.error('There was an error making the request', error);
     }
     setToggleModal(false);
-  }, []);
+  }, [transaction]);
 
   return (
     <Grid2
@@ -44,7 +46,8 @@ export const Sidebar = () => {
       height="100%"
       justifyContent="space-between"
       padding="24px"
-      width="116px"
+      minWidth="112px"
+      maxWidth="112px"
     >
       <List sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         {routes.map((listItem) => (
@@ -53,6 +56,7 @@ export const Sidebar = () => {
             component={NavLink}
             to={listItem.route}
             sx={{
+              width: '64px',
               padding: '24px',
               borderRadius: '100%',
               color: theme.custom.text900,
@@ -100,7 +104,7 @@ export const Sidebar = () => {
               />
             </Box>
             <CustomButton variant="contained" onClick={handleCreateTransaction}>
-              Create
+              {t('button.create')}
             </CustomButton>
           </>
         </CustomModal>
