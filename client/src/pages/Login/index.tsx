@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { TextField, Box, Grid2, Typography, useTheme, FormGroup } from '@mui/material';
 import { CustomButton } from 'utils/customMUI';
-// eslint-disable-next-line react-hooks/exhaustive-deps
-// import httpClient from 'httpClient';
+// import httpClient from 'services/httpClient';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from 'common/constants';
 
 interface ILoginForm {
   username: string;
@@ -71,8 +71,8 @@ export const Login: React.FC = () => {
           // const response: any = await httpClient.post('/auth/token', loginFormData);
           const response = await axios.post('http://127.0.0.1:8000/api/token/', loginFormData);
           if (response.status === 200) {
-            localStorage.setItem('AccessToken', JSON.stringify(response?.data?.access));
-            localStorage.setItem('RefreshToken', JSON.stringify(response?.data?.refresh));
+            localStorage.setItem(ACCESS_TOKEN, response?.data?.access);
+            localStorage.setItem(REFRESH_TOKEN, response?.data?.refresh);
           }
           // show toast and redirect in 5 seconds
           navigate('/dashboard');

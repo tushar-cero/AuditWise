@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Button, Grid2, List, ListItemButton, TextField, Box, Typography, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { IconLibrary } from 'style/icons';
 import { CustomModal } from 'components/CustomModal';
 import { CustomButton } from 'utils/customMUI';
+import httpClient from 'services/httpClient';
 
 const routes = [
   {
@@ -22,6 +23,20 @@ export const Sidebar = () => {
   const theme = useTheme();
   const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [transaction, setTransaction] = useState<string>('');
+
+  const handleCreateTransaction = useCallback(async () => {
+    console.log('transaction', transaction);
+    try {
+      const response = await httpClient.post('/transactions/create/', { text: transaction });
+      if (response.status === 200) console.log('Transaction created successfully');
+      else console.log('Transaction creation failed');
+    } catch (error) {
+      // shoot toast
+      console.error('There was an error making the request', error);
+    }
+    setToggleModal(false);
+  }, []);
+
   return (
     <Grid2
       display="flex"
@@ -84,7 +99,7 @@ export const Sidebar = () => {
                 fullWidth
               />
             </Box>
-            <CustomButton variant="contained" onClick={() => setToggleModal(false)}>
+            <CustomButton variant="contained" onClick={handleCreateTransaction}>
               Create
             </CustomButton>
           </>

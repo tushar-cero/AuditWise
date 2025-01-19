@@ -1,7 +1,7 @@
 {
     "columns": [
         {
-          "field": "date",
+          "field": "created_on",
           "headerName": "Date",
           "width": 110,
           "headerIcon": "CalendarIcon"
@@ -27,14 +27,13 @@
           "headerIcon": "DollarIcon"
         },
         {
-          "field": "tags",
+          "field": "tag",
           "headerName": "Tag",
           "width": 200,
-          "renderCell": "renderTags",
           "headerIcon": "TagIcon"
         },
         {
-          "field": "type",
+          "field": "transaction_type",
           "headerName": "Type",
           "width": 80,
           "headerIcon": "CreditIcon"
