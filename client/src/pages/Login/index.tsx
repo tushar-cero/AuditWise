@@ -5,7 +5,6 @@ import httpClient from 'services/httpClient';
 import { ACCESS_TOKEN, REFRESH_TOKEN, API_ENDPOINT } from 'common/constants';
 import { useNavigate } from 'react-router-dom';
 import { useTranslate } from 'hooks/useTranslate';
-// import { useTranslation } from 'react-i18next';
 
 interface ILoginForm {
   username: string;

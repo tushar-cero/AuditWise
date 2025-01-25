@@ -1,9 +1,9 @@
 {
-    "buttons": {
+    "button": {
         "signIn": "Sign In",
         "create": "Create"
     },
     "title": {
-        "signIn": "Sign In"
+        "signIn": "Let's get you Signed In"
     }
 }
