@@ -1,9 +1,12 @@
 import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useToastSlice } from 'redux/Snackbar/slice';
+
 import { TextField, Box, Grid2, Typography, useTheme, FormGroup } from '@mui/material';
 import { CustomButton } from 'utils/customMUI';
-import httpClient from 'services/httpClient';
+
 import { ACCESS_TOKEN, REFRESH_TOKEN, API_ENDPOINT } from 'common/constants';
-import { useNavigate } from 'react-router-dom';
+import httpClient from 'services/httpClient';
 import { useTranslate } from 'hooks/useTranslate';
 
 interface ILoginForm {
@@ -15,6 +18,7 @@ export const Login: React.FC = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { t } = useTranslate();
+  const { actions } = useToastSlice();
   const classes = {
     root: {
       height: '100vh',
@@ -64,7 +68,7 @@ export const Login: React.FC = () => {
     async (e: any) => {
       e.preventDefault();
       if (loginFormData.username === '' || loginFormData.password === '') {
-        console.log('No data entered.'); // shoot toast
+        dispatch(actions.showMessage('No data entered.'));
       } else {
         console.log('loginFormData', loginFormData);
         try {
@@ -73,8 +77,8 @@ export const Login: React.FC = () => {
             localStorage.setItem(ACCESS_TOKEN, response?.data?.access);
             localStorage.setItem(REFRESH_TOKEN, response?.data?.refresh);
           }
-          // show toast and redirect in 5 seconds
-          navigate('/dashboard');
+          dispatch(actions.showMessage('Successfully logged in. Navigating to dashboard.'));
+          setTimeout(() => navigate('/dashboard'), 2000);
         } catch (error) {
           console.error('There was an error making the request', error);
         }
@@ -128,3 +132,6 @@ export const Login: React.FC = () => {
     </Grid2>
   );
 };
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
+}

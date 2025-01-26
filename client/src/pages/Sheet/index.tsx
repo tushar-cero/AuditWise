@@ -1,12 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box, Grid2 } from '@mui/material';
-import { PageHeader } from 'components/PageHeader';
-import { CustomTable } from 'components/CustomTable';
+
 import httpClient from 'services/httpClient';
-import columnsJson from './metaData.json';
 import { API_ENDPOINT } from 'common/constants';
 
+import columnsJson from './metaData.json';
+import { PageHeader } from 'components/PageHeader';
+import { CustomTable } from 'components/CustomTable';
+import { useToastSlice } from 'redux/Snackbar/slice';
+
 export const Sheet = () => {
+  const { actions } = useToastSlice();
   const [rowData, setRowData] = useState<any>([]);
   const handleSheetCall = useCallback(async () => {
     try {
@@ -14,7 +18,7 @@ export const Sheet = () => {
       if (response.status === 200) setRowData(response?.data);
       else setRowData([]);
     } catch (error) {
-      // shoot toast
+      dispatch(actions.showMessage('There was an error making the request'));
       console.error('There was an error making the request', error);
     }
   }, []);
@@ -41,3 +45,6 @@ export const Sheet = () => {
     </Grid2>
   );
 };
+function dispatch(arg0: any) {
+  throw new Error('Function not implemented.');
+}
