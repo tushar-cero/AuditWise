@@ -23,6 +23,10 @@ export const AppRoutes = () => {
     {
       path: '/logout',
       element: <Logout />
+    },
+    {
+      path: '*',
+      element: <Navigate to="/login" replace />
     }
   ];
   const AuthenticatedRoutes = [

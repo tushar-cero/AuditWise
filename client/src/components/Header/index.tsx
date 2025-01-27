@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Avatar, Box, Grid2, Typography, useTheme } from '@mui/material';
 import { CustomGrid } from 'utils/customMUI';
 import auditwiseLogo from '../../style/assets/auditwiseLogo.svg';
 import { IconLibrary } from 'style/icons';
 
-export const Header = () => {
+export const Header = memo(() => {
   const theme = useTheme();
 
   const userName = 'John Doe';
@@ -36,4 +36,4 @@ export const Header = () => {
       </CustomGrid>
     </CustomGrid>
   );
-};
+});

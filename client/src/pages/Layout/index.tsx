@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Box, Grid2 } from '@mui/material';
 
 import { Header } from 'components/Header';
 import { Sidebar } from 'components/Sidebar';
 
-export const Layout = () => {
+export const Layout = memo(() => {
   return (
     <>
       <Header />
@@ -23,4 +23,4 @@ export const Layout = () => {
       </Grid2>
     </>
   );
-};
+});

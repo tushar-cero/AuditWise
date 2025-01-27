@@ -1,11 +1,11 @@
+import React, { memo } from 'react';
 import { alpha, Box, useTheme } from '@mui/material';
-import React from 'react';
 
 interface ICustomModal {
   children: React.ReactNode;
 }
 
-export const CustomModal: React.FC<ICustomModal> = (props: ICustomModal) => {
+export const CustomModal: React.FC<ICustomModal> = memo((props: ICustomModal) => {
   const theme = useTheme();
   const { children } = props;
   return (
@@ -40,4 +40,4 @@ export const CustomModal: React.FC<ICustomModal> = (props: ICustomModal) => {
       </Box>
     </Box>
   );
-};
+});

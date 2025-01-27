@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useToastSlice } from 'redux/Snackbar/slice';
 
 import { TextField, Box, Grid2, Typography, useTheme, FormGroup } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
 import { CustomButton } from 'utils/customMUI';
 
 import { ACCESS_TOKEN, REFRESH_TOKEN, API_ENDPOINT } from 'common/constants';
@@ -14,11 +14,10 @@ interface ILoginForm {
   password: string;
 }
 
-export const Login: React.FC = () => {
+export const Login: React.FC = memo(() => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { t } = useTranslate();
-  const { actions } = useToastSlice();
   const classes = {
     root: {
       height: '100vh',
@@ -68,7 +67,7 @@ export const Login: React.FC = () => {
     async (e: any) => {
       e.preventDefault();
       if (loginFormData.username === '' || loginFormData.password === '') {
-        dispatch(actions.showMessage('No data entered.'));
+        toast('No data entered.');
       } else {
         console.log('loginFormData', loginFormData);
         try {
@@ -77,9 +76,10 @@ export const Login: React.FC = () => {
             localStorage.setItem(ACCESS_TOKEN, response?.data?.access);
             localStorage.setItem(REFRESH_TOKEN, response?.data?.refresh);
           }
-          dispatch(actions.showMessage('Successfully logged in. Navigating to dashboard.'));
+          toast('Successfully logged in. Navigating to dashboard.');
           setTimeout(() => navigate('/dashboard'), 2000);
         } catch (error) {
+          toast('Incorrect username or password.');
           console.error('There was an error making the request', error);
         }
       }
@@ -89,49 +89,49 @@ export const Login: React.FC = () => {
   );
 
   return (
-    <Grid2 container component="main" sx={classes?.root}>
-      <Grid2 sx={classes?.subRoot}>
-        <Box sx={classes?.paper}>
-          <Typography component="h1" variant="h5">
-            {t('title.signIn')}
-          </Typography>
-          <FormGroup sx={classes?.form}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="Email Address"
-              name="username"
-              autoComplete="username"
-              autoFocus
-              value={loginFormData.username}
-              onChange={(e) => setLoginFormData((prev) => ({ ...prev, username: e.target.value }))}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={loginFormData.password}
-              onChange={(e) => setLoginFormData((prev) => ({ ...prev, password: e.target.value }))}
-            />
-            <CustomButton onClick={handleLoginFormSubmission} sx={classes?.submit}>
-              {t('button.signIn')}
-            </CustomButton>
-          </FormGroup>
-        </Box>
+    <>
+      <Grid2 container component="main" sx={classes?.root}>
+        <Grid2 sx={classes?.subRoot}>
+          <Box sx={classes?.paper}>
+            <Typography component="h1" variant="h5">
+              {t('title.signIn')}
+            </Typography>
+            <FormGroup sx={classes?.form}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="Email Address"
+                name="username"
+                autoComplete="username"
+                autoFocus
+                value={loginFormData.username}
+                onChange={(e) => setLoginFormData((prev) => ({ ...prev, username: e.target.value }))}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={loginFormData.password}
+                onChange={(e) => setLoginFormData((prev) => ({ ...prev, password: e.target.value }))}
+              />
+              <CustomButton onClick={handleLoginFormSubmission} sx={classes?.submit}>
+                {t('button.signIn')}
+              </CustomButton>
+            </FormGroup>
+          </Box>
+        </Grid2>
+        <Box sx={classes?.image} />
       </Grid2>
-      <Box sx={classes?.image} />
-    </Grid2>
+      <ToastContainer />
+    </>
   );
-};
-function dispatch(arg0: any) {
-  throw new Error('Function not implemented.');
-}
+});

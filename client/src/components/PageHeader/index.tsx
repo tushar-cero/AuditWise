@@ -1,5 +1,5 @@
+import React, { memo, ReactNode } from 'react';
 import { Grid2, SxProps, Typography } from '@mui/material';
-import React, { ReactNode } from 'react';
 
 interface IPageHeader {
   pageTitle: string;
@@ -7,7 +7,7 @@ interface IPageHeader {
   sx?: SxProps;
 }
 
-export const PageHeader = ({ pageTitle, customWidget, sx }: IPageHeader) => {
+export const PageHeader = memo(({ pageTitle, customWidget, sx }: IPageHeader) => {
   return (
     <Grid2
       sx={{
@@ -23,4 +23,4 @@ export const PageHeader = ({ pageTitle, customWidget, sx }: IPageHeader) => {
       {customWidget}
     </Grid2>
   );
-};
+});

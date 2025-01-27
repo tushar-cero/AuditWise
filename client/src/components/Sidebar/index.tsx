@@ -1,14 +1,23 @@
-import React, { useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { Button, Grid2, List, ListItemButton, TextField, Box, Typography, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+
 import { IconLibrary } from 'style/icons';
-import { CustomModal } from 'components/CustomModal';
-import { CustomButton } from 'utils/customMUI';
 import httpClient from 'services/httpClient';
 import { API_ENDPOINT } from 'common/constants';
 import { useTranslate } from 'hooks/useTranslate';
+import { CustomModal } from 'components/CustomModal';
+import { CustomButton } from 'utils/customMUI';
 
-const routes = [
+interface Route {
+  name: string;
+  icon: string;
+  route: string;
+}
+
+// Example usage
+const routes: Route[] = [
   {
     name: 'Dashboard',
     icon: 'DashboardIcon',
@@ -21,7 +30,7 @@ const routes = [
   }
 ];
 
-export const Sidebar = () => {
+export const Sidebar = memo(() => {
   const theme = useTheme();
   const { t } = useTranslate();
   const [toggleModal, setToggleModal] = useState<boolean>(false);
@@ -30,10 +39,10 @@ export const Sidebar = () => {
   const handleCreateTransaction = useCallback(async () => {
     try {
       const response = await httpClient.post(API_ENDPOINT.createTransaction, { text: transaction });
-      if (response.status === 200) console.log('Transaction created successfully');
-      else console.log('Transaction creation failed');
+      if (response.status === 200) toast('Transaction created successfully');
+      else toast('Transaction creation failed');
     } catch (error) {
-      // shoot toast
+      toast('There was an error making the request');
       console.error('There was an error making the request', error);
     }
     setToggleModal(false);
@@ -109,6 +118,7 @@ export const Sidebar = () => {
           </>
         </CustomModal>
       )}
+      <ToastContainer />
     </Grid2>
   );
-};
+});

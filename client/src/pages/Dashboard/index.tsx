@@ -1,7 +1,5 @@
-import React from 'react'
+import React, { memo } from 'react';
 
-export const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+export const Dashboard = memo(() => {
+  return <div>Dashboard</div>;
+});
