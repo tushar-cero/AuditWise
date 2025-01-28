@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useContext, useEffect, useState } from 'react';
 import { Box, Grid2 } from '@mui/material';
 
 import httpClient from 'services/httpClient';
@@ -8,9 +8,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import columnsJson from './metaData.json';
 import { PageHeader } from 'components/PageHeader';
 import { CustomTable } from 'components/CustomTable';
+import { RefreshContext } from 'context';
 
 export const Sheet = memo(() => {
   const [rowData, setRowData] = useState<any>([]);
+  const { refreshTrigger } = useContext(RefreshContext);
   const handleSheetCall = useCallback(async () => {
     try {
       const response = await httpClient.get(API_ENDPOINT.sheetData);
@@ -23,10 +25,8 @@ export const Sheet = memo(() => {
 
   useEffect(() => {
     handleSheetCall();
-    // put data in redux, fetch it from redux and put it in the table.
     return undefined;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [handleSheetCall, refreshTrigger]);
 
   return (
     <Grid2 padding="24px">

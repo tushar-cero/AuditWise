@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useContext, useState } from 'react';
 import { Button, Grid2, List, ListItemButton, TextField, Box, Typography, useTheme } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,6 +9,7 @@ import { API_ENDPOINT } from 'common/constants';
 import { useTranslate } from 'hooks/useTranslate';
 import { CustomModal } from 'components/CustomModal';
 import { CustomButton } from 'utils/customMUI';
+import { RefreshContext } from 'context';
 
 interface Route {
   name: string;
@@ -35,18 +36,21 @@ export const Sidebar = memo(() => {
   const { t } = useTranslate();
   const [toggleModal, setToggleModal] = useState<boolean>(false);
   const [transaction, setTransaction] = useState<string>('');
+  const { refresh } = useContext(RefreshContext);
 
   const handleCreateTransaction = useCallback(async () => {
     try {
       const response = await httpClient.post(API_ENDPOINT.createTransaction, { text: transaction });
-      if (response.status === 200) toast('Transaction created successfully');
-      else toast('Transaction creation failed');
+      if (response.status === 200) {
+        toast('Transaction created successfully');
+        refresh();
+      } else toast('Transaction creation failed');
     } catch (error) {
       toast('There was an error making the request');
       console.error('There was an error making the request', error);
     }
     setToggleModal(false);
-  }, [transaction]);
+  }, [refresh, transaction]);
 
   return (
     <Grid2
