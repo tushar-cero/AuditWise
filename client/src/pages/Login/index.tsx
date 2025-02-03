@@ -31,11 +31,10 @@ export const Login: React.FC = memo(() => {
       height: '100vh'
     },
     image: {
-      backgroundImage:
-        'url(https://img.freepik.com/free-photo/close-up-education-economy-objects_23-2149113571.jpg?t=st=1736956970~exp=1736960570~hmac=ed3dbef6482a7f020afda02f0658464d50ec4a8bcd929b9ec5e45b07894af5e8&w=740)',
+      backgroundImage: 'url(https://img.freepik.com/free-photo/3d-rendering-money-tree_23-2151575345.jpg)',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      backgroundPosition: 'bottom',
       width: '50vw',
       height: '100vh'
     },

@@ -4,11 +4,23 @@ from rest_framework import status, generics
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.authentication import BaseAuthentication
+from rest_framework.exceptions import AuthenticationFailed
 
 # importing models and serializers
 from django.contrib.auth.models import User
 from .models import TransactionModel
 from .serializers import UserSerializer, TransactionSerializer
+
+
+# ----- Clerk Authenticaion
+
+class ClerkAuthentication(BaseAuthentication):
+    def authenticate(self, request):
+        user = getattr(request, 'user', None)
+        if user is None:
+            raise AuthenticationFailed('No user found')
+        return (user, None)
 
 # ----- User Views
 
@@ -26,6 +38,7 @@ class GetUsersView(APIView):
 # ----- Transaction Views
 
 class TransactionListView(generics.ListAPIView):
+  authentication_classes = [ClerkAuthentication]
   permission_classes = [IsAuthenticated]
   serializer_class = TransactionSerializer
 
@@ -34,6 +47,7 @@ class TransactionListView(generics.ListAPIView):
     return TransactionModel.objects.filter(user=user)
 
 class TransactionCreateView(generics.CreateAPIView):
+    authentication_classes = [ClerkAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = TransactionSerializer
 
@@ -65,6 +79,7 @@ class TransactionCreateView(generics.CreateAPIView):
 
 class TransactionDelete(generics.DestroyAPIView):
   serializer_class = TransactionSerializer
+  authentication_classes = [ClerkAuthentication]
   permission_classes = [IsAuthenticated]
 
   def get_queryset(self):

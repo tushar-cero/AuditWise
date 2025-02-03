@@ -46,6 +46,10 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
+CLERK_ISSUER = 'https://central-reindeer-83.clerk.accounts.dev'
+CLERK_JWKS = 'https://central-reindeer-83.clerk.accounts.dev/.well-known/jwks.json'
+CLERK_SECRET = 'pk_test_Y2VudHJhbC1yZWluZGVlci04My5jbGVyay5hY2NvdW50cy5kZXYk'
+
 # Application definition
 
 INSTALLED_APPS = [

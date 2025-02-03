@@ -1,19 +1,19 @@
 {
-    "compilerOptions": {
-      "jsx": "react",
-      "baseUrl": "src",
-      "target": "es6",
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "outDir": "./dist",
-      "rootDir": "./src",
-      "sourceMap": true,
-      "noImplicitAny": true,
-      "moduleResolution": "node",
-      "resolveJsonModule": true,         // Allows importing JSON modules
-      "allowSyntheticDefaultImports": true, // Allows default imports      
-    },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
-  }
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "src",
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
