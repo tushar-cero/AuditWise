@@ -38,7 +38,7 @@ class GetUsersView(APIView):
 # ----- Transaction Views
 
 class TransactionListView(generics.ListAPIView):
-  authentication_classes = [ClerkAuthentication]
+  # authentication_classes = [ClerkAuthentication]
   permission_classes = [IsAuthenticated]
   serializer_class = TransactionSerializer
 
@@ -47,7 +47,7 @@ class TransactionListView(generics.ListAPIView):
     return TransactionModel.objects.filter(user=user)
 
 class TransactionCreateView(generics.CreateAPIView):
-    authentication_classes = [ClerkAuthentication]
+    # authentication_classes = [ClerkAuthentication]
     permission_classes = [IsAuthenticated]
     serializer_class = TransactionSerializer
 
@@ -79,7 +79,7 @@ class TransactionCreateView(generics.CreateAPIView):
 
 class TransactionDelete(generics.DestroyAPIView):
   serializer_class = TransactionSerializer
-  authentication_classes = [ClerkAuthentication]
+  # authentication_classes = [ClerkAuthentication]
   permission_classes = [IsAuthenticated]
 
   def get_queryset(self):

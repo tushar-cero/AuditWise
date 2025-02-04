@@ -85,6 +85,7 @@ export const Sidebar = memo(() => {
           </ListItemButton>
         ))}
       </List>
+      <ToastContainer />
       <Button
         onClick={() => setToggleModal(true)}
         sx={{
@@ -122,7 +123,6 @@ export const Sidebar = memo(() => {
           </>
         </CustomModal>
       )}
-      <ToastContainer />
     </Grid2>
   );
 });
